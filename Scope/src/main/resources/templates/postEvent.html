@@ -17,7 +17,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
     </head>
-    <body id="page-top" onload="javascript:setTime('{{start}}')">
+    <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
@@ -39,15 +39,8 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-heading text-uppercase">GO LIVE!</div>
+                <div class="masthead-heading text-uppercase">{{name}}</div>
                 <div class="masthead-subheading">1 de octubre 2021</div>
-				<div class="countdown">
-					<div id="day">00</div>
-					<div id="hour">00</div>
-					<div id="minute">00</div>
-					<div id="second">00</div>
-				</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="/signup">Regístrate</a>
             </div>
         </header>
         <!-- Services-->
@@ -136,47 +129,6 @@
                     </li>
                 </ul>
             </div>
-        </section>
-        <section class="page-section" id="scheduleExtended">
-        	<div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Proximos días</h2>
-                </div>
-                <div>
-                	<a id="day1"class="btn btn-primary btn-xl text-uppercase">1 de octubre</a>
-                	<a id="day2" class="btn btn-primary btn-xl text-uppercase">2 de octubre</a>
-                	<a id="day3" class="btn btn-primary btn-xl text-uppercase">3 de octubre</a>
-                </div>
-                <div id="tableday1" class="scheduleTable text-center">
-                	<table>
-                		<thead bgcolor="#00a599">
-                		<tr>
-                			<td width="10%"></td>
-                			<td width="15%" height="50px">Sala 1</td>
-                			<td width="15%" height="50px">Sala 2</td>
-                			<td width="15%" height="50px">Sala 3</td>
-                			<td width="15%" height="50px">Sala 4</td>
-                			<td width="15%" height="50px">Sala 5</td>
-                		</tr>
-                		<thead bgcolor="#fff">
-                		<tr>
-                			<td height="50px">9:00</td>
-                			<td rowspan="2" height="50px">Presentación del evento</td>
-                			<td height="50px"></td>
-                			<td height="50px"></td>
-                			<td height="50px"></td>
-                			<td height="50px"></td>
-                		</tr>
-                		<tr>
-                			<td>10:00</td>
-                			<td height="50px">Go Live!</td>
-                			<td height="50px">Edison Pro</td>
-                			<td height="50px"></td>
-                			<td height="50px"></td>
-                		</tr>
-                	</table>
-                </div>
-        	</div>
         </section>
         <!-- Team-->
         <section class="page-section bg-light" id="speakers">
@@ -271,36 +223,5 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script type="text/javascript">
-        	var countDate = new Date();
-        	function setTime(start){
-				countDate = new Date(start);
-				console.log(start);
-			}
-		function timer(){
-			var now = new Date().getTime();
-			gap = countDate - now;
-			var second = 1000;
-			var minute = second * 60;
-			var hour = minute * 60;
-			var day = hour * 24;
-			
-			var d = Math.floor(gap/(day));
-			var h = Math.floor((gap%day)/(hour));
-			var m = Math.floor((gap%hour)/(minute));
-			var s = Math.floor((gap%minute)/(second));
-			
-			document.getElementById('day').innerText = d;
-			document.getElementById('hour').innerText = h;
-			document.getElementById('minute').innerText = m;
-			document.getElementById('second').innerText = s;
-		}
-		
-		setInterval(function(){
-			timer();},1000)
-        </script>
-        <script>
-        </script>
-        
     </body>
 </html>

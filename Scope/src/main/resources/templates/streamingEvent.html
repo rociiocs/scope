@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Scope Producciones Streaming</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
+    </head>
+    <body id="page-top" onload="javascript:putRoom('{{roomId}}')">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <img src="/assets/logos/blancomini.png" width="10%" height="10%" onclick="location.href='./index.html'"></img>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-heading text-uppercase">{{name}}</div>
+                <div class="masthead-subheading">1 de octubre 2021</div>
+            </div>
+        </header>
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h3 class="titlevideo">{{name}}</h3>
+                </div>
+            
+            	<!-- Portfolio Grid Items-->
+                <div class="row justify-content-center">
+                	<div class="col-md-10 col-lg-8 mb-3">
+                		{{#imagen}}
+                		<video id='hls-example' class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls poster="data:image/jpg;base64,{{imagen}}">
+                		{{/imagen}}
+                        {{^imagen}}
+                        <video id='hls-example' class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls poster="/assets/logos/logoverticalblanco.png">
+                        {{/imagen}}
+                            <source type="application/x-mpegURL" src={{link}}>
+                        </video>
+                        <div id="viewers" class="views"> espectadores</div>
+                        <div class="description">{{description}}</div>
+					</div>
+					<div class="col-md-6 col-lg-3 mb-3">
+                		<div class="card mt-2">
+                    		<div class="card-header">
+                        		<h3 id="name-title"></h3>
+                        		<input type="text" placeholder="Escribe tu nombre" id="name-value" autofocus class="form-control">
+                    		</div>
+                    		<div id="scrollTable" style="height: 300px; overflow: auto">
+                            	<table id="message-container-table">
+                            	</table>
+                     		</div>
+                    		<div class="card-body">
+                        		<div class="input-group">
+                            		<input type="text" placeholder="Escribe tu mensaje" id="message-value" autofocus class="form-control">
+	                           		<div class="input-group-append">
+	                                	<button class="btn btn-dark" id="send-btn">Enviar</button>
+	                                	<!--button class="btn btn-dark" id="logout">Cambiar nombre</button-->
+	                            	</div>
+                            	</div>
+                        	</div>
+                    	</div>
+                	</div>
+
+            	</div>
+        	</div>  
+		</section>
+        <!-- Services-->
+        <section class="page-section" id="event">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Sobre el evento</h2>
+                    <h3 class="section-subheading text-muted">Descubre una nueva manera de retransmitir directos</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-lightbulb fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Inspírate</h4>
+                        <p class="text-muted">Asiste a las charlas exclusivas en directo organizadas por nuestros profesionales</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-share-alt fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Comparte</h4>
+                        <p class="text-muted">Comparte tus opiniones con otros asistentes mediante chat online</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-bell fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Notificaciones</h4>
+                        <p class="text-muted">Recibe notificaciones de los diferentes eventos que organizamos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Clients-->
+        <div class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/microsoft.svg" alt="..." /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/google.svg" alt="..." /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/facebook.svg" alt="..." /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/ibm.svg" alt="..." /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy;    Scope Producciones 2021</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/scopeproduccion?lang=es"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/company/scope-producciones/about/"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/scope_producciones/"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/scopeproducciones"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+ </div>
+        <!-- Portfolio Modals-->
+        <!-- Bootstrap core JS-->
+        <script src="/webjars/jquery/jquery.min.js"></script>
+    	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+   	 	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+   	 	<script src="/js/scripts.js"></script>
+   		<script src="/script.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script type="text/javascript">
+        	var countDate = new Date();
+        	function setTime(start){
+				countDate = new Date(start);
+			}
+		function timer(){
+			var now = new Date().getTime();
+			gap = countDate - now;
+			var second = 1000;
+			var minute = second * 60;
+			var hour = minute * 60;
+			var day = hour * 24;
+			
+			var d = Math.floor(gap/(day));
+			var h = Math.floor((gap%day)/(hour));
+			var m = Math.floor((gap%hour)/(minute));
+			var s = Math.floor((gap%minute)/(second));
+			
+			document.getElementById('day').innerText = d;
+			document.getElementById('hour').innerText = h;
+			document.getElementById('minute').innerText = m;
+			document.getElementById('second').innerText = s;
+		}
+		
+		setInterval(function(){
+			timer();},1000)
+        </script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <!-- JS code -->
+        <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+        <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
+        <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+		
+        <script>
+        var player = videojs('hls-example');
+        player.play();
+        </script>
+    </body>
+</html>

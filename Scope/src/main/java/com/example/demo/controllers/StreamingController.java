@@ -37,7 +37,11 @@ public class StreamingController {
 	public void init() throws ParseException {
 		Date start = StringToDate("2021-10-01 09:00:00");
 		Date finish = StringToDate("2021-10-01 11:00:00");
-		streamings.save(new Streaming("Bunny","https://6140257335b64.streamlock.net/buck/prueba/playlist.m3u8",start,finish,""));
+		streamings.save(new Streaming("Sala 1","https://cdn3.wowza.com/1/MC85SUU5eFhzSEJ4/NUpXTzcv/hls/live/playlist.m3u8",start,finish,""));
+		streamings.save(new Streaming("Sala 2","https://6140257335b64.streamlock.net/buck/prueba/playlist.m3u8",start,finish,""));
+		streamings.save(new Streaming("Sala 3","https://6140257335b64.streamlock.net/buck/prueba/playlist.m3u8",start,finish,""));
+		streamings.save(new Streaming("Sala 4","https://6140257335b64.streamlock.net/buck/prueba/playlist.m3u8",start,finish,""));
+		streamings.save(new Streaming("Sala 5","https://6140257335b64.streamlock.net/buck/prueba/playlist.m3u8",start,finish,""));
 	}
 	@GetMapping("/")
 	public String preEvent(Model model) {
@@ -45,6 +49,12 @@ public class StreamingController {
 		model.addAttribute("start",streaming.getStart());
 		return "preEvent";
 	}
+	
+	@GetMapping("/post")
+	public String postEvent(Model model) {
+		return "postEvent";
+	}
+	
 	@GetMapping("/streaming")
 	public String index(Model model) throws SQLException {
 		List<String> imagenes = new ArrayList<String>();
@@ -89,7 +99,7 @@ public class StreamingController {
 	        }
 		}
 		model.addAttribute("start",streaming.getStart());
-		return "stream";
+		return "streamingEvent";
 	}
 	
 	@PostMapping("admin/streaming/add")
