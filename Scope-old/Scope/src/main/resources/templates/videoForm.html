@@ -1,0 +1,24 @@
+<html>
+<head>
+	<meta charset="UTF-8"/>
+</head>
+<body>
+	<form action="/admin/video/add" method="post" enctype="multipart/form-data">
+		<h1>Añadir video</h1>
+
+		<label>Nombre</label>
+		<input type='text' name='name' required/>
+		</p>
+		<label>Url</label>
+		<input type='text' name='url' required/>
+		</p>
+		<label>Descripción</label>
+		<textarea name='description' rows=3 cols=40 required></textarea>
+		<p>Sube una foto:</p>
+		<input type='file' name='image' accept=".jpg, .jpeg, .png">
+		<p>
+		<input type='submit' value='Guardar'/>
+		</p>
+	</form>
+</body>
+</html>
