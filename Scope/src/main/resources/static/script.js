@@ -2,10 +2,12 @@ var stompClient=null;
 var table = document.getElementById("message-container-table");
 var room;
 var roomVar;
+var user;
 var clientsInRoom = 0;
 
-function putRoom(roome){
+function putRoom(roome,username){
 	room = roome
+	user = username;
 	roomVar = "/app/message/"+room
 	console.log(roome)
 }
@@ -14,7 +16,7 @@ function putRoom(roome){
 	 var var1 = document.getElementById("message-value");
 	 
     let jsonOb={
-        name:$("#name-value").val(),
+        name:user,
         content:$("#message-value").val()
     }
 	var1.value='';

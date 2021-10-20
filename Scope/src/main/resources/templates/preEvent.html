@@ -1,306 +1,632 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Scope Producciones Streaming</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
-    </head>
-    <body id="page-top" onload="javascript:setTime('{{start}}')">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <img src="assets/logos/blancomini.png" width="10%" height="10%" onclick="location.href='./index.html'"></img>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#event">Sobre el evento</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#schedule">Programación</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#speakers">Ponentes</a></li>
-                         <a class="btn btn-primary btn-xl text-uppercase" href="/signup">Regístrate</a>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-heading text-uppercase">GO LIVE!</div>
-                <div class="masthead-subheading">1 de octubre 2021</div>
-				<div class="countdown">
-					<div id="day">00</div>
-					<div id="hour">00</div>
-					<div id="minute">00</div>
-					<div id="second">00</div>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Scope Producciones Streaming</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	<!-- Font Awesome icons (free version)-->
+	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+	<!-- Google fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="css/styles.css" rel="stylesheet" />
+	<link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top" onload="javascript:setTime('{{start}}');javascript:show(1)">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+		<div class="container">
+			<img src="assets/logos/blancomini.png" width="10%" height="10%"
+				onclick="location.href='./index.html'"></img>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				Menu
+				<i class="fas fa-bars ms-1"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+					<li class="nav-item"><a class="nav-link" href="#event">Sobre el evento</a></li>
+					<li class="nav-item"><a class="nav-link" href="#schedule">Programación</a></li>
+					<li class="nav-item"><a class="nav-link" href="#speakers">Ponentes</a></li>
+					{{#course}}
+					<a class="btn btn-primary btn-xl text-uppercase" href="/signin">Acceder</a>
+					{{/course}}
+					{{^course}}
+					<a class="btn btn-primary btn-xl text-uppercase" href="/signup">Regístrate</a>
+					{{/course}}
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Masthead-->
+	<header class="masthead">
+		<div class="container">
+			<div class="masthead-heading text-uppercase">{{name}}</div>
+			<div class="row">
+			<div class="masthead-subheading">{{date}}</div>
+			</div>
+			<div class="row">
+			</div>
+			{{#course}}
+			<h3>El evento está en curso</h3>
+			<a class="btn btn-primary btn-xl text-uppercase" href="/streaming/{{id}}">Acceder</a>
+			{{/course}}
+			{{^course}}
+			<div class="countdown">
+				<div id="day">00</div>
+				<div id="hour">00</div>
+				<div id="minute">00</div>
+				<div id="second">00</div>
+			</div>
+			<a class="btn btn-primary btn-xl text-uppercase" href="/signup">Regístrate</a>
+			{{/course}}
+			
+		</div>
+	</header>
+	<!-- Services-->
+	<section class="page-section" id="event">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">Sobre el evento</h2>
+				<h3 class="section-subheading text-muted">Descubre una nueva manera de retransmitir directos</h3>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-lightbulb fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="my-3">Inspírate</h4>
+					<p class="text-muted">Asiste a las charlas exclusivas en directo organizadas por nuestros
+						profesionales</p>
 				</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="/signup">Regístrate</a>
-            </div>
-        </header>
-        <!-- Services-->
-        <section class="page-section" id="event">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Sobre el evento</h2>
-                    <h3 class="section-subheading text-muted">Descubre una nueva manera de retransmitir directos</h3>
-                </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lightbulb fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Inspírate</h4>
-                        <p class="text-muted">Asiste a las charlas exclusivas en directo organizadas por nuestros profesionales</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-share-alt fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Comparte</h4>
-                        <p class="text-muted">Comparte tus opiniones con otros asistentes mediante chat online</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-bell fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Notificaciones</h4>
-                        <p class="text-muted">Recibe notificaciones de los diferentes eventos que organizamos</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-         <!-- About-->
-        <section class="page-section" id="schedule">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Programación</h2>
-                    <h3 class="section-subheading text-muted">Eventos próximos</h3>
-                </div>
-                <ul class="timeline">
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h6 class="dateEvent">01/10/2021 - 9:00 AM</h6>
-                                <h4 class="subheading">GO LIVE!</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Introducción en el mundo de la retransmisión en directo. Qué necesitamos para ofrecer a nuestros espectadores un contenido de calidad</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h6 class="dateEvent">02/10/2021 - 10:00 AM</h6>
-                                <h4 class="subheading">Plataforma de streaming</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Conoce el proceso de diseño y desarollo de una plataforma streaming usando como servidor WOWZA</p></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h6 class="dateEvent">03/10/2021 - 11:00 AM</h6>
-                                <h4 class="subheading">Últimas novedades</h4>
-                            </div>
-                            <div class="timeline-body"><p class="text-muted">Experimenta la novedad de los mundos virtuales con Edison Pro, la herramienta que llenará de magia tus experiencias digitales</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image">
-                            <h4>
-                                Descarga
-                                <br />
-                                programación
-                                <br />
-                                completa
-                            </h4>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <section class="page-section" id="scheduleExtended">
-        	<div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Proximos días</h2>
-                </div>
-                <div>
-                	<a id="day1"class="btn btn-primary btn-xl text-uppercase">1 de octubre</a>
-                	<a id="day2" class="btn btn-primary btn-xl text-uppercase">2 de octubre</a>
-                	<a id="day3" class="btn btn-primary btn-xl text-uppercase">3 de octubre</a>
-                </div>
-                <div id="tableday1" class="scheduleTable text-center">
-                	<table>
-                		<thead bgcolor="#00a599">
-                		<tr>
-                			<td width="10%"></td>
-                			<td width="15%" height="50px">Sala 1</td>
-                			<td width="15%" height="50px">Sala 2</td>
-                			<td width="15%" height="50px">Sala 3</td>
-                			<td width="15%" height="50px">Sala 4</td>
-                			<td width="15%" height="50px">Sala 5</td>
-                		</tr>
-                		<thead bgcolor="#fff">
-                		<tr>
-                			<td height="50px">9:00</td>
-                			<td rowspan="2" height="50px">Presentación del evento</td>
-                			<td height="50px"></td>
-                			<td height="50px"></td>
-                			<td height="50px"></td>
-                			<td height="50px"></td>
-                		</tr>
-                		<tr>
-                			<td>10:00</td>
-                			<td height="50px">Go Live!</td>
-                			<td height="50px">Edison Pro</td>
-                			<td height="50px"></td>
-                			<td height="50px"></td>
-                		</tr>
-                	</table>
-                </div>
-        	</div>
-        </section>
-        <!-- Team-->
-        <section class="page-section bg-light" id="speakers">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Ponentes</h2>
-                    <h3 class="section-subheading text-muted">Conoce a nuestro equipo profesional</h3>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
-                            <h4>Antonio Murillo</h4>
-                            <p class="text-muted">Consultor Senior</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
-                            <h4>Rocío Chen</h4>
-                            <p class="text-muted">Desarrolladora Web</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
-                            <h4>Manuel Carbajo</h4>
-                            <p class="text-muted">Consultor Comercial</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Podrás asistir a los directos organizados por nuestros oradores, formando debates en los que podréis participar a través del chat online</p></div>
-                </div>
-            </div>
-        </section>
-        <!-- Clients-->
-        <div class="py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg" alt="..." /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg" alt="..." /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg" alt="..." /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg" alt="..." /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Footer-->
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy;    Scope Producciones 2021</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/scopeproduccion?lang=es"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/company/scope-producciones/about/"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/scope_producciones/"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/scopeproducciones"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                    <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="./statistics.js"></script>
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script type="text/javascript">
-        	var countDate = new Date();
-        	function setTime(start){
-				countDate = new Date(start);
-				console.log(start);
-			}
-		function timer(){
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-share-alt fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="my-3">Comparte</h4>
+					<p class="text-muted">Comparte tus opiniones con otros asistentes mediante chat online</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x">
+						<i class="fas fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-bell fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="my-3">Notificaciones</h4>
+					<p class="text-muted">Recibe notificaciones de los diferentes eventos que organizamos</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- About-->
+	<section class="page-section" id="schedule">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">Programación</h2>
+				<h3 class="section-subheading text-muted">Eventos próximos</h3>
+			</div>
+			<ul class="timeline">
+				<li>
+					<div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg"
+							alt="..." /></div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h6 class="dateEvent">01/10/2021 - 9:00 AM</h6>
+							<h4 class="subheading">GO LIVE!</h4>
+						</div>
+						<div class="timeline-body">
+							<p class="text-muted">Introducción en el mundo de la retransmisión en directo. Qué
+								necesitamos para ofrecer a nuestros espectadores un contenido de calidad</p>
+						</div>
+					</div>
+				</li>
+				<li class="timeline-inverted">
+					<div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg"
+							alt="..." /></div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h6 class="dateEvent">02/10/2021 - 10:00 AM</h6>
+							<h4 class="subheading">Plataforma de streaming</h4>
+						</div>
+						<div class="timeline-body">
+							<p class="text-muted">Conoce el proceso de diseño y desarollo de una plataforma streaming
+								usando como servidor WOWZA</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg"
+							alt="..." /></div>
+					<div class="timeline-panel">
+						<div class="timeline-heading">
+							<h6 class="dateEvent">03/10/2021 - 11:00 AM</h6>
+							<h4 class="subheading">Últimas novedades</h4>
+						</div>
+						<div class="timeline-body">
+							<p class="text-muted">Experimenta la novedad de los mundos virtuales con Edison Pro, la
+								herramienta que llenará de magia tus experiencias digitales</p>
+						</div>
+					</div>
+				</li>
+
+				<li class="timeline-inverted">
+					<div class="timeline-image">
+						<a href="/downloadFile">
+							<h4>
+								Descarga
+								<br />
+								programación
+								<br />
+								completa
+							</h4>
+					</div>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+	</section>
+	<section class="page-section" id="scheduleExtended">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">Proximos días</h2>
+				<br>
+			</div>
+			<div class="text-center days">
+				<a id="day1" onclick="show(1)" class="btn btn-primary text-uppercase">1 octubre</a>
+				<a id="day2" onclick="show(2)" class="btn btn-primary text-uppercase">2 octubre</a>
+				<a id="day3" onclick="show(3)" class="btn btn-primary text-uppercase">3 octubre</a>
+			</div>
+			<br>
+			<div id="tableday1" class="schedule">
+				<div class="container d-none d-sm-none d-md-block sinpadding">
+					<div class="row text-center">
+						<div class="col-md-2">
+							<div class="titleTable">Hora</div>
+							<div class="hour">8:00</div>
+							<div class="hour">9:00</div>
+							<div class="hour">10:00</div>
+							<div class="hour">11:00</div>
+							<div class="hour">12:00</div>
+							<div class="hour">13:00</div>
+							<div class="hour"> </div>
+						</div>
+						<div class="col-md-2">
+							<a href="/streaming/1">
+								<div class="titleTable">Sala 1 </div>
+								<div class="event grey">Presentación del evento</div>
+								<div class="event brown">Distribución de los discursos</div>
+								<div class="event"> </div>
+								<div class="event blue">Debate sobre los cuidado paliativos</div>
+								<div class="event"> </div>
+								<div class="event grey">Cierre de ceremonia</div>
+							</a>
+						</div>
+						<div class="col-md-2">
+							<a href="/streaming/2">
+								<div class="titleTable">Sala 2 </div>
+								<div class="event"> </div>
+								<div class="event"> </div>
+								<div class="event pink">Jaap Denissen - Presidential Address</div>
+								<div class="event green">Sesión de posters 1</div>
+								<div class="event"> </div>
+							</a>
+						</div>
+						<div class="col-md-2">
+							<a href="/streaming/3">
+								<div class="titleTable">Sala 3 </div>
+								<div class="event"> </div>
+								<div class="event"> </div>
+								<div class="event pink">Marcos Lorenzo - Psicoterapia</div>
+								<div class="event green">Sesión de posters 2</div>
+								<div class="event purple">Un café con la psicología</div>
+							</a>
+						</div>
+						<div class="col-md-2">
+							<a href="/streaming/4">
+								<div class="titleTable">Sala 4 </div>
+								<div class="event"> </div>
+								<div class="event"> </div>
+								<div class="event pink">María Zapata - Luces y sombras</div>
+								<div class="event"> </div>
+								<div class="event"> </div>
+								<div class="event grey">Networking </div>
+							</a>
+						</div>
+						<div class="col-md-2">
+							<a href="/streaming/5">
+								<div class="titleTable">Sala 5 </div>
+								<div class="event"> </div>
+								<div class="event"> </div>
+								<div class="event pink">Will Williams - Psicología animal</div>
+								<div class="event"> </div>
+								<div class="event"> </div>
+								<div class="event grey">Networking</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="container d-block d-sm-block d-md-none sinpadding">
+					<section id="menu-productos">
+						<div class="main-container">
+							<div class="first-row">
+								<h5>Desliza para ver las demás salas</h5>
+							</div>
+							<div class="second-row">
+								<div class="slider" id="slider">
+									<div class="products-container">
+										<div class="row schedule">
+											<div class="col-4">
+												<div class="titleTable">Hora</div>
+												<div class="hour">8:00</div>
+												<div class="hour">9:00</div>
+												<div class="hour">10:00</div>
+												<div class="hour">11:00</div>
+												<div class="hour">12:00</div>
+												<div class="hour">13:00</div>
+												<div class="hour"> </div>
+											</div>
+											<div class="col-8">
+												<a href="/streaming/1">
+													<div class="titleTable">Sala 1 </div>
+													<div class="event grey">Presentación del evento</div>
+													<div class="event brown">Distribución de los discursos</div>
+													<div class="event"> </div>
+													<div class="event blue">Debate sobre los cuidado paliativos</div>
+													<div class="event"> </div>
+													<div class="event grey">Cierre de ceremonia</div>
+												</a>
+											</div>
+										</div>
+									</div>
+
+									<div class="products-container">
+										<div class="row schedule">
+											<div class="col-4">
+												<div class="titleTable">Hora</div>
+												<div class="hour">8:00</div>
+												<div class="hour">9:00</div>
+												<div class="hour">10:00</div>
+												<div class="hour">11:00</div>
+												<div class="hour">12:00</div>
+												<div class="hour">13:00</div>
+												<div class="hour"> </div>
+											</div>
+											<div class="col-8">
+												<a href="/streaming/2">
+													<div class="titleTable">Sala 2 </div>
+													<div class="event"> </div>
+													<div class="event"> </div>
+													<div class="event pink">Jaap Denissen - Presidential Address</div>
+													<div class="event"> </div>
+												</a>
+											</div>
+										</div>
+									</div>
+
+									<div class="products-container">
+										<div class="row schedule">
+											<div class="col-4">
+												<div class="titleTable">Hora</div>
+												<div class="hour">8:00</div>
+												<div class="hour">9:00</div>
+												<div class="hour">10:00</div>
+												<div class="hour">11:00</div>
+												<div class="hour">12:00</div>
+												<div class="hour">13:00</div>
+												<div class="hour"> </div>
+											</div>
+
+											<div class="col-8">
+												<a href="/streaming/3">
+													<div class="titleTable">Sala 3 </div>
+													<div class="event"> </div>
+													<div class="event"> </div>
+													<div class="event pink">Marcos Lorenzo - Psicoterapia</div>
+													<div class="event"> </div>
+												</a>
+											</div>
+										</div>
+									</div>
+
+									<div class="products-container">
+										<div class="row schedule">
+											<div class="col-4">
+												<div class="titleTable">Hora</div>
+												<div class="hour">8:00</div>
+												<div class="hour">9:00</div>
+												<div class="hour">10:00</div>
+												<div class="hour">11:00</div>
+												<div class="hour">12:00</div>
+												<div class="hour">13:00</div>
+												<div class="hour"></div>
+											</div>
+											<div class="col-8">
+												<a href="/streaming/1">
+													<div class="titleTable">Sala 4 </div>
+													<div class="event"> </div>
+													<div class="event"> </div>
+													<div class="event pink">María Zapata - Luces y sombras</div>
+													<div class="event"> </div>
+												</a>
+											</div>
+										</div>
+									</div>
+
+									<div class="products-container">
+										<div class="row schedule">
+											<div class="col-4">
+												<div class="titleTable">Hora</div>
+												<div class="hour">8:00</div>
+												<div class="hour">9:00</div>
+												<div class="hour">10:00</div>
+												<div class="hour">11:00</div>
+												<div class="hour">12:00</div>
+												<div class="hour">13:00</div>
+												<div class="hour"></div>
+											</div>
+											<div class="col-8">
+												<a href="/streaming/1">
+													<div class="titleTable">Sala 5 </div>
+													<div class="event"> </div>
+													<div class="event"> </div>
+													<div class="event pink">Will Williams - Psicología animal</div>
+													<div class="event"> </div>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<div id="tableday2" class="scheduleTable text-center" style="display:inline">
+				<table>
+					<thead bgcolor="#00a599">
+						<tr>
+							<td width="10%"></td>
+							<td width="15%" height="50px">Sala 1</td>
+							<td width="15%" height="50px">Sala 2</td>
+							<td width="15%" height="50px">Sala 3</td>
+							<td width="15%" height="50px">Sala 4</td>
+							<td width="15%" height="50px">Sala 5</td>
+						</tr>
+						<thead bgcolor="#fff">
+							<tr>
+								<td height="50px">8:00</td>
+								<td colspan="5" height="50px">Transporte desde los hoteles asociados a la Universidad
+								</td>
+							</tr>
+							<tr>
+								<td>8:30</td>
+								<td colspan="5" height="50px">Acreditación en la Universidad Europea (todo el día)</td>
+							</tr>
+							<tr>
+								<td>8:45</td>
+								<td colspan="5" height="50px">Bienvenida a los discursos</td>
+							</tr>
+							<tr>
+								<td height="50px">9:00</td>
+								<td height="50px">Debate sobre la psicología</td>
+								<td height="50px">Psicoterapia en niños</td>
+								<td height="50px">Cuidados paliativos</td>
+								<td height="50px">El tabú de la psicología</td>
+								<td height="50px">Psicoanálisis</td>
+							</tr>
+				</table>
+			</div>
+			<div id="tableday3" class="scheduleTable text-center" style="display:none">
+				<table>
+					<thead bgcolor="#02a599">
+						<tr>
+							<td width="10%"></td>
+							<td width="15%" height="50px">Sala 1</td>
+							<td width="15%" height="50px">Sala 2</td>
+							<td width="15%" height="50px">Sala 3</td>
+							<td width="15%" height="50px">Sala 4</td>
+							<td width="15%" height="50px">Sala 5</td>
+						</tr>
+						<thead bgcolor="#fff">
+							<tr>
+								<td height="50px">9:00</td>
+								<td rowspan="2" height="50px">Presentación del evento</td>
+								<td height="50px"></td>
+								<td height="50px"></td>
+								<td height="50px"></td>
+								<td height="50px"></td>
+							</tr>
+							<tr>
+								<td>11:00</td>
+								<td height="50px">Go Live!</td>
+								<td height="50px">Edison Pro</td>
+								<td height="50px"></td>
+								<td height="50px"></td>
+							</tr>
+				</table>
+			</div>
+		</div>
+		</div>
+		</div>
+
+	</section>
+	<!-- Team-->
+	<section class="page-section bg-light" id="speakers">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">Ponentes</h2>
+				<h3 class="section-subheading text-muted">Conoce a nuestro equipo profesional</h3>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="team-member">
+						<img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
+						<h4>Antonio Murillo</h4>
+						<p class="text-muted">Consultor Senior</p>
+						<a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+						<a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+						<a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="team-member">
+						<img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
+						<h4>Rocío Chen</h4>
+						<p class="text-muted">Desarrolladora Web</p>
+						<a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+						<a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+						<a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="team-member">
+						<img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
+						<h4>Manuel Carbajo</h4>
+						<p class="text-muted">Consultor Comercial</p>
+						<a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+						<a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+						<a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 mx-auto text-center">
+					<p class="large text-muted">Podrás asistir a los directos organizados por nuestros oradores,
+						formando debates en los que podréis participar a través del chat online</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Clients-->
+	<div class="py-5">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-3 col-sm-6 my-3">
+					<a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg"
+							alt="..." /></a>
+				</div>
+				<div class="col-md-3 col-sm-6 my-3">
+					<a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg"
+							alt="..." /></a>
+				</div>
+				<div class="col-md-3 col-sm-6 my-3">
+					<a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg"
+							alt="..." /></a>
+				</div>
+				<div class="col-md-3 col-sm-6 my-3">
+					<a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg"
+							alt="..." /></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<!-- Footer-->
+	<footer class="footer py-4">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-4 text-lg-start">Copyright &copy; Scope Producciones 2021</div>
+				<div class="col-lg-4 my-3 my-lg-0">
+					<a class="btn btn-dark btn-social mx-2" href="https://twitter.com/scopeproduccion?lang=es"><i
+							class="fab fa-twitter"></i></a>
+					<a class="btn btn-dark btn-social mx-2"
+						href="https://www.linkedin.com/company/scope-producciones/about/"><i
+							class="fab fa-linkedin-in"></i></a>
+					<a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/scope_producciones/"><i
+							class="fab fa-instagram"></i></a>
+					<a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/scopeproducciones"><i
+							class="fab fa-facebook-f"></i></a>
+				</div>
+				<div class="col-lg-4 text-lg-end">
+					<a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+					<a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	</div>
+	<!-- Bootstrap core JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="./statistics.js"></script>
+	<script src="/js/scripts.js"></script>
+	<script src="/js/app.js"></script>
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+	<!-- * *                               SB Forms JS                               * *-->
+	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+	<script type="text/javascript">
+		var countDate = new Date();
+		function setTime(start) {
+			countDate = new Date(start);
+			console.log(start);
+		}
+		function timer() {
 			var now = new Date().getTime();
 			gap = countDate - now;
 			var second = 1000;
 			var minute = second * 60;
 			var hour = minute * 60;
 			var day = hour * 24;
-			
-			var d = Math.floor(gap/(day));
-			var h = Math.floor((gap%day)/(hour));
-			var m = Math.floor((gap%hour)/(minute));
-			var s = Math.floor((gap%minute)/(second));
-			
+
+			var d = Math.floor(gap / (day));
+			var h = Math.floor((gap % day) / (hour));
+			var m = Math.floor((gap % hour) / (minute));
+			var s = Math.floor((gap % minute) / (second));
+
 			document.getElementById('day').innerText = d;
 			document.getElementById('hour').innerText = h;
 			document.getElementById('minute').innerText = m;
 			document.getElementById('second').innerText = s;
 		}
-		
-		setInterval(function(){
-			timer();},1000)
-        </script>
-        <script>
-        </script>
-        
-    </body>
+
+		setInterval(function () {
+			timer();
+		}, 1000)
+	</script>
+	<script>
+		function show(number) {
+			if (number == 1) {
+				document.getElementById('tableday1').style.display = 'inline';
+				document.getElementById('tableday2').style.display = 'none';
+				document.getElementById('tableday3').style.display = 'none';
+
+				document.getElementById('day1').style.backgroundColor = "#cca000";
+				document.getElementById('day2').style.backgroundColor = "#ffc800";
+				document.getElementById('day3').style.backgroundColor = "#ffc800";
+			} else if (number == 2) {
+				document.getElementById('tableday1').style.display = 'none';
+				document.getElementById('tableday2').style.display = 'inline';
+				document.getElementById('tableday3').style.display = 'none';
+
+				document.getElementById('day1').style.backgroundColor = "#ffc800";
+				document.getElementById('day2').style.backgroundColor = "#cca000";
+				document.getElementById('day3').style.backgroundColor = "#ffc800";
+			} else {
+				document.getElementById('tableday1').style.display = 'none';
+				document.getElementById('tableday2').style.display = 'none';
+				document.getElementById('tableday3').style.display = 'inline';
+
+				document.getElementById('day1').style.backgroundColor = "#ffc800";
+				document.getElementById('day2').style.backgroundColor = "#ffc800";
+				document.getElementById('day3').style.backgroundColor = "#cca000";
+			}
+		}
+
+	</script>
+
+</body>
+
 </html>

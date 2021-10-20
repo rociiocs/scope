@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-     <meta charset="utf-8" />
+    <head>
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -16,11 +16,8 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/css/styles.css" rel="stylesheet" />
         <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
-
-
-</head>
-<body id="page-top" class="bg-dark" onload="javascript:putRoom('{{roomId}}');javascript:setTime('{{start}}')">
-
+    </head>
+    <body id="page-top" onload="javascript:putRoom('{{roomId}}')">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
@@ -30,23 +27,17 @@
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/streaming">En directo</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/video">A la carta</a></li>
-                    </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-heading text-uppercase">CONTENT COOKS</div>
-                <div class="masthead-subheading">En directo</div>
+                <div class="masthead-heading text-uppercase">{{name}}</div>
+                <div class="masthead-subheading">1 de octubre 2021</div>
             </div>
         </header>
-        <!-- Services-->
-		<section class="page-section" id="services">
+        <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
                     <h3 class="titlevideo">{{name}}</h3>
@@ -55,7 +46,6 @@
             	<!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
                 	<div class="col-md-10 col-lg-8 mb-3">
-                	{{#show}}
                 		{{#imagen}}
                 		<video id='hls-example' class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls poster="data:image/jpg;base64,{{imagen}}">
                 		{{/imagen}}
@@ -66,16 +56,6 @@
                         </video>
                         <div id="viewers" class="views"> espectadores</div>
                         <div class="description">{{description}}</div>
-					{{/show}}
-					{{^show}}
-                       <h3 class="section-heading text-white">Próximo directo en</h3>
-      					<div class="countdown text-white">
-      						<div id="day">00</div>
-      						<div id="hour">00</div>
-      						<div id="minute">00</div>
-      						<div id="second">00</div>
-      					</div>
-					{{/show}}
 					</div>
 					<div class="col-md-6 col-lg-3 mb-3">
                 		<div class="card mt-2">
@@ -102,25 +82,61 @@
             	</div>
         	</div>  
 		</section>
+        <!-- Services-->
+        <section class="page-section" id="event">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Sobre el evento</h2>
+                    <h3 class="section-subheading text-muted">Descubre una nueva manera de retransmitir directos</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-lightbulb fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Inspírate</h4>
+                        <p class="text-muted">Asiste a las charlas exclusivas en directo organizadas por nuestros profesionales</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-share-alt fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Comparte</h4>
+                        <p class="text-muted">Comparte tus opiniones con otros asistentes mediante chat online</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-bell fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Notificaciones</h4>
+                        <p class="text-muted">Recibe notificaciones de los diferentes eventos que organizamos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Clients-->
         <div class="py-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/microsoft.svg" alt="..."/></a>
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/microsoft.svg" alt="..." /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/google.svg" alt="..."/></a>
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/google.svg" alt="..." /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/facebook.svg" alt="..."/></a>
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/facebook.svg" alt="..." /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/ibm.svg" alt="..."/></a>
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="/assets/img/logos/ibm.svg" alt="..." /></a>
                     </div>
                 </div>
             </div>
         </div>
+        
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">
@@ -139,10 +155,10 @@
                 </div>
             </div>
         </footer>
-
-
-</div>
-		<script src="/webjars/jquery/jquery.min.js"></script>
+ </div>
+        <!-- Portfolio Modals-->
+        <!-- Bootstrap core JS-->
+        <script src="/webjars/jquery/jquery.min.js"></script>
     	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
    	 	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
    	 	<script src="/js/scripts.js"></script>
@@ -191,5 +207,5 @@
         var player = videojs('hls-example');
         player.play();
         </script>
-</body>
+    </body>
 </html>

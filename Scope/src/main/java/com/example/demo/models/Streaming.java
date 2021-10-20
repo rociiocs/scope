@@ -1,7 +1,9 @@
 package com.example.demo.models;
 
 import java.sql.Blob;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Streaming {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String name;
 	private String link;
@@ -27,11 +28,13 @@ public class Streaming {
 	@JsonIgnore
 	private Blob poster;
 	private String image;
-	
+	@Lob
+	@JsonIgnore
+	private Blob document;
 	public Streaming() {
 		
 	}
-	public Streaming(String name,String link,Date start,Date end,String description) {
+	public Streaming(String name,String link,Date start,Date end,String description,long id) {
 		this.name = name;
 		this.link = link;
 		this.start = start;
@@ -39,8 +42,9 @@ public class Streaming {
 		this.description = description;
 		views = 0;
 		likes = 0;
+		this.id = id;
 	}
-	public Streaming(String name,String link,Date start,Date end,Blob poster,String description) {
+	public Streaming(String name,String link,Date start,Date end,Blob poster,String description,Blob document) {
 		this.name = name;
 		this.link = link;
 		this.start = start;
@@ -49,8 +53,17 @@ public class Streaming {
 		views = 0;
 		likes = 0;
 		this.poster = poster;
+		this.document = document;
 	}
 	
+	public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
 	public String getName() {
         return name;
     }
@@ -115,5 +128,20 @@ public class Streaming {
     
     public void setPoster(Blob poster) {
     	this.poster = poster;
+    }
+    
+    public Blob getDocument() {
+    	return document;
+    }
+    
+    public void setDocument(Blob document) {
+    	this.document = document;
+    }
+    
+    public String getStartString() {
+    	String pattern = "EEEEE d MMMMM yyyy HH:mm";
+    	SimpleDateFormat simpleDateFormat =new SimpleDateFormat(pattern, new Locale("es", "ES"));
+    	String date = simpleDateFormat.format(start);
+    	return date;
     }
 }

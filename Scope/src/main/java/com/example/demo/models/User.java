@@ -21,12 +21,11 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
-	private String alias;
+	private String lastname;
 	private String password;
 	private String mail;
-	private Date birth;
-	private String gender;
-	
+	private String company;
+	private String occupation;
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles= new ArrayList<String>();
 	
@@ -35,16 +34,23 @@ public class User {
 	@OneToMany(mappedBy="usuario",cascade=CascadeType.ALL,orphanRemoval=true)
 	private List<Comment>comments = new ArrayList<Comment>();
 	*/
-	@JsonIgnore
-	@ManyToMany
-	private List<Video> favouriteVideos = new ArrayList<Video>();
 	
 	public User() {
 	}
-	
+	/*
 	public User(String name, String password, String... roles) {
 		this.name = name;
 		this.password = password;
+		this.roles = List.of(roles);
+	}
+	*/
+	public User(String mail, String name, String lastname, String company, String occupation, String password, String... roles) {
+		this.mail = mail;
+		this.name = name;
+		this.lastname = lastname;
+		this.password = password;
+		this.company = company;
+		this.occupation = occupation;
 		this.roles = List.of(roles);
 	}
 	
@@ -70,28 +76,12 @@ public class User {
 		this.name = name;
 	}
 	
-	public String getAlias() {
-		return alias;
+	public String getLastname() {
+		return lastname;
 	}
 	
-	public void setAlias(String alias) {
-		this.alias = alias;
-	}
-	
-	public Date getBirth() {
-		return birth;
-	}
-	
-	public void setBirth(Date birth) {
-		this.birth = birth;
-	}
-	
-	public String getGender() {
-		return gender;
-	}
-	
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	
 	public String getPassword() {
@@ -108,5 +98,21 @@ public class User {
 	
 	public String getMail() {
 		return mail;
+	}
+	
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	
+	public String getCompany() {
+		return company;
+	}
+	
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+	
+	public String getOccupation() {
+		return occupation;
 	}
 }

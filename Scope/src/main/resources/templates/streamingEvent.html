@@ -17,7 +17,7 @@
         <link href="/css/styles.css" rel="stylesheet" />
         <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
     </head>
-    <body id="page-top" onload="javascript:putRoom('{{roomId}}')">
+    <body id="page-top" onload="javascript:putRoom('{{roomId}}','{{username}}')">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
@@ -27,6 +27,12 @@
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                	<form action="/signout" method="post">
+							<input type="hidden" name="_csrf" value="{{token}}"/>
+							<input class="btn btn-primary btn-xl text-uppercase" type="submit" value="Cerrar sesión" />
+					</form>	
+				</ul>
                 </div>
             </div>
         </nav>
@@ -34,7 +40,7 @@
         <header class="masthead">
             <div class="container">
                 <div class="masthead-heading text-uppercase">{{name}}</div>
-                <div class="masthead-subheading">1 de octubre 2021</div>
+                <div class="masthead-subheading">{{date}}</div>
             </div>
         </header>
         <section class="page-section" id="services">
@@ -60,11 +66,11 @@
 					<div class="col-md-6 col-lg-3 mb-3">
                 		<div class="card mt-2">
                     		<div class="card-header">
-                        		<h3 id="name-title"></h3>
-                        		<input type="text" placeholder="Escribe tu nombre" id="name-value" autofocus class="form-control">
+                        		<h3 class="text-center">Chat</h3>
+                        		<!--input type="text" placeholder="Escribe tu nombre" id="name-value" autofocus class="form-control"-->
                     		</div>
                     		<div id="scrollTable" style="height: 300px; overflow: auto">
-                            	<table id="message-container-table">
+                            	<table class="tableChat" id="message-container-table">
                             	</table>
                      		</div>
                     		<div class="card-body">

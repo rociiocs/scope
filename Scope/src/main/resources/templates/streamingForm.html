@@ -16,7 +16,9 @@
 		<textarea name='description' rows=3 cols=40 required></textarea>
 		<p>Sube una foto:</p>
 		<input type='file' name='image' accept=".jpg, .jpeg, .png">
-		<p>
+		<p>Sube un pdf:</p>
+		<input type='file' name='pdf' accept=".pdf">
+		<input type="hidden" name="_csrf" value="{{token}}" />
 		<input type='submit' value='Guardar'/>
 		</p>
 	</form>
