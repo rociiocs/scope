@@ -42,11 +42,11 @@ public class StreamingController {
 
 	@PostConstruct
 	public void init() throws ParseException {
-		Date start = StringToDate("2021-10-14 09:00:00");
-		Date finish = StringToDate("2021-10-15 10:00:00");
+		Date start = StringToDate("2021-10-21 09:00:00");
+		Date finish = StringToDate("2021-10-30 10:00:00");
 		streamings.save(new Streaming("Sala 1","https://cdn3.wowza.com/1/MC85SUU5eFhzSEJ4/NUpXTzcv/hls/live/playlist.m3u8",start,finish,"",1));
 		streamings.save(new Streaming("Sala 2","https://6140257335b64.streamlock.net/buck/prueba/playlist.m3u8",start,finish,"",2));
-		streamings.save(new Streaming("Scope","https://6140257335b64.streamlock.net/buck/prueba/playlist.m3u8",start,finish,"",3));
+		streamings.save(new Streaming("Scope","https://i.vimeocdn.com/video/1160380496-c26a73a730232e5450e5809629374b1e084f28fef5f5ef7ff8b74240d7bfdf41-d?mw=1500&mh=844",start,finish,"",3));
 		streamings.save(new Streaming("Sala 4","https://6140257335b64.streamlock.net/buck/prueba/playlist.m3u8",start,finish,"",4));
 		streamings.save(new Streaming("Sala 5","https://6140257335b64.streamlock.net/buck/prueba/playlist.m3u8",start,finish,"",5));
 	}

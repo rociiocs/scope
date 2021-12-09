@@ -11,12 +11,19 @@
 	<groupId>com.example</groupId>
 	<artifactId>Scope</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>Scope</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+	<!-- <dependency>
+	          <groupId>org.springframework.cloud</groupId>
+	          <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
+	          <version>1.2.3.RELEASE</version>
+	      </dependency> -->
+	      
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mustache</artifactId>
@@ -80,6 +87,19 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>3.1.1-1</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.stripe</groupId>
+		  <artifactId>stripe-java</artifactId>
+		  <version>20.85.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
 
